@@ -1,0 +1,17 @@
+#line graph
+
+data = file["variable"]
+
+plt.figure(figsize=(6,4))
+plt.plot(range(0,len(time)), data, color='dodgerblue', linestyle='solid', linewidth=0.7, label='LABEL NAME')
+
+plt.xlim(20,30)
+plt.ylim(5570,5650)
+
+plt.xticks([0,120,244], ["1 June", "1 July", "1 August"], fontsize=6, rotation=45)
+plt.yticks([5400, 5800, 6200], ["5400 gpm", "5800 gpm", "6200 gpm"], fontsize=6, rotation=45)
+
+plt.title("TITLE", position=(0.425,1.0), fontsize=11)
+plt.legend(loc='lower left', prop={'size': 10})
+plt.show()
+
