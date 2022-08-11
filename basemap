@@ -1,0 +1,40 @@
+import matplotlib.pyplot as plt
+import matplotlib.colorbar as cb
+from mpl_toolkits.basemap import Basemap, shiftgrid
+
+#index
+i_w = 0
+i_e = 360
+j_n = 90
+j_s = -90
+
+
+#basemap
+def basemap(data):
+
+    m = Basemap(llcrnrlon=i_w, llcrnrlat=j_s, urcrnrlon=i_e, urcrnrlat=j_n, resolution='c', projection='cyl')
+    XX, YY = np.meshgrid(lon,lat)
+    x,y = m(XX, YY)
+
+    m.drawcoastlines()
+    m.drawmeridians(np.arange(i_w,i_e+1,60), labels=[0,0,0,1], linewidth=0.6, fontsize='6')
+    m.drawparallels(np.arange(j_s,j_n+1,30), labels=[1,0,0,0], linewidth=0.6, fontsize='6')
+    m.fillcontinents(color='grey',lake_color='grey', alpha=0.3)
+    
+    a = plt.scatter(x,y, s=0.7, marker'.', color = 'dodgerblue', linewidth = 1)
+
+
+#visualize
+name = [ClimateNet, CGNet, UNet, Deeplabv3, DUCHDC, PSPNet]
+namelist = ['ClimateNet', 'CGNet', 'UNet', 'Deeplabv3+', 'DUCHDC', 'PSPNet']
+
+
+plt.figure(figsize=(10,5))
+for num in range(6):
+    plt.subplot(2,3,num+1)
+    basemap(name[num])
+    plt.title(namelist[num])
+
+
+plt.savefig(day+'.jpg', format='jpg', dpi=200)
+plt.show()
