@@ -1,0 +1,31 @@
+import numpy as np
+import xarray as xr
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+
+#read file to xarray 
+in_dir   = "FILE ADDRESS"
+file     = xr.open_dataset(in_dir+"FILE NAME")
+
+#index
+V1     = file["variable1"]
+V2     = file["variable2"]
+
+#data calculation
+
+#visualize
+plt.figure(figsize=(10,5))
+
+ax = plt.subplot(1,1,1,projection=ccrs.PlateCarree())
+c = ax.contour(x,y,data,np.arange(200,310,5),linewidths=1)
+plt.clabel(c,inline="True",fmt="%1.0f",fontsize='7')
+ax.coastlines()
+ax.set_xticks(np.arange(-180,180+1,60))
+ax.set_xticklabels(['180W','120W','60W','0','60E','120E','180E'])
+ax.set_yticks(np.arange(-90,90+1,30))
+ax.set_yticklabels(['90S','60S','30S','EQ','30N','60N','90N'])
+#plt.colorbar(c,orientation='horizontal')
+plt.title('TITLE',loc='left')
+plt.legend()
+plt.show()
+plt.savefig("NAME", format = 'jpg', dpi = 200)
