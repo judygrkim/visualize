@@ -12,12 +12,13 @@ j_s = -90
 #basemap
 def basemap(data):
 
-    m = Basemap(llcrnrlon=i_w, llcrnrlat=j_s, urcrnrlon=i_e, urcrnrlat=j_n, resolution='c', projection='cyl')
+    m = Basemap(llcrnrlon=i_w, llcrnrlat=j_s, urcrnrlon=i_e, urcrnrlat=j_n, resolution='c', projection='cyl')       
+    #lower left corner longitude, lower left corner latitude, upper right corner longitude, upper right corner latitude
     XX, YY = np.meshgrid(lon,lat)
     x,y = m(XX, YY)
 
     m.drawcoastlines()
-    m.drawmeridians(np.arange(i_w,i_e+1,60), labels=[0,0,0,1], linewidth=0.6, fontsize='6')
+    m.drawmeridians(np.arange(i_w,i_e+1,60), labels=[0,0,0,1], linewidth=0.6, fontsize='6')             #labels=[left,right,top,bottom]
     m.drawparallels(np.arange(j_s,j_n+1,30), labels=[1,0,0,0], linewidth=0.6, fontsize='6')
     m.fillcontinents(color='grey',lake_color='grey', alpha=0.3)
     
