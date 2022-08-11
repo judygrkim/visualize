@@ -1,0 +1,12 @@
+#contour(line)
+
+a=plt.contour(x,y,Z[t,:,:], np.arange(11020,14000,40), colors='k', linewidths=0.5)
+plt.clabel(a,inline="True",fontsize='7',fmt="%1.0f")
+
+#contourf(gradation)
+b=plt.contourf(x,y,Z[t,:,:]/9.8, np.arange(12220,12650,40), cmap='bwr', extend='both')
+cax=plt.axes([0.33, 0.32, 0.4, 0.02])
+cbar=plt.colorbar(b,orientation='horizontal',cax=cax)
+cbar.set_label('[NAME]',fontsize='8')
+
+
