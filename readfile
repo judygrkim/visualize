@@ -1,0 +1,18 @@
+in_dir = "FILE ADDRESS"
+
+#xarray
+import xarray as xr
+
+file = xr.open_dataset(in_dir+"FILE NAME")
+
+V1 = file["variable"]
+
+
+
+#numpy
+from netCDF4 import Dataset
+import numpy as np
+
+file = Dataset(in_dir+"FILE NAME")
+
+V1 = file.variables["variable1"][:]
